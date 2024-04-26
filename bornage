@@ -1,0 +1,20 @@
+<h1>Ваш возраст, когда вы родились</h1>
+Выберите цвет:
+<img src="https://htmlcolorcodes.com/assets/images/colors/red-color-solid-background-1920x1080.png">
+<img src="https://www.balletmafia.co.uk/wp-content/uploads/2020/02/RoyalElectricBlue-fabric-detail-straight-ballet-skirt-dancewear-balletmafia-london.jpg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Flag_of_Libya_%281977%E2%80%932011%29.svg/300px-Flag_of_Libya_%281977%E2%80%932011%29.svg.png">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrBHg8xHj_PLtOTWMRQpmcQ0nuJgJf9TxpsejRrmh5Ag&s">
+<div class="container">
+    <button id="myButton">Узнать возраст при рождении!</button>
+</div>
+
+<script>
+    // Получаем ссылку на кнопку
+    var button = document.getElementById('myButton');
+
+    // Добавляем обработчик события для клика на кнопку
+    button.addEventListener('click', function() {
+        // Показываем предупреждение
+        alert('Ваш возраст при рождении - 0!');
+    });
+</script>

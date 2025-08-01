@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>tripartiteOS</title>
+  <style>
+    @font-face {
+        font-family: msdos;
+        src: url(PxPlus_IBM_VGA_9x16.ttf);
+    }
+    body {
+      background-color: black;
+      color: white;
+      font-family: msdos;
+      white-space: pre-wrap;
+      margin: 20px;
+      font-size: 18px;
+    }
+    
+.nav {
+  background-color: #111;
+  padding: 8px 16px;
+  /*border-bottom: 1px solid lime;*/
+
+  display: flex;
+  gap: 16px; /* spacing between links */
+  flex-wrap: wrap; /* wrap on small screens if needed */
+  position:fixed;
+  width:100%;
+}
+
+.nav-link {
+  color:white;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  color: rgb(166, 166, 166);
+}
+    .cursor {
+      display: inline-block;
+      width: 1ch;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    template {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<template id="nav-template">
+  <div class="nav">
+    <a href="#" target="_blank" class="nav-link">[Home]</a>
+    <a href="https://github.com/ProximalElk6186/tripartiteOS/tree/main?tab=readme-ov-file#tripartiteos-wip" target="_blank" class="nav-link">[About]</a>
+    <a href="https://github.com/ProximalElk6186/tripartiteOS" target="_blank" class="nav-link">[GitHub]</a>
+    <!--<a href="" target="_blank" class="nav-link">[Contact]</a>-->
+  </div>
+</template>
+
+
+<template id="content-template">
+    <h1>tripartiteOS</h1>
+
+    <p>16-bit software? 32-bit? 64-bit? tripartiteOS runs all of them!</p>
+    <p>Fully DOS-compatible — flawlessly runs DOS programs as if you were running under a real DOS!</p>
+<h3>Why choosing between eras? Have them all!</h3>
+tripartiteOS flawlessly runs programs from the 80's, 90's and current day.
+
+<h3>Coordinate all programs no matter their age!</h3>
+tripartiteOS allows for communication between all of the processes — the developers can fully coordinate the programs no matter their bitness!
+
+<h3>Convenient for development!</h3>
+You are in full control — write real-mode drivers, flat binary loaders, or 64-bit applications.
+
+<h3>Open-source!</h3>
+tripartiteOS is fully open-source and released under GPL v2, meaning everybody can contribute to the project!
+All config files (Configs\) are licensed under CC0!
+
+<h3>Built with industry-leading tools!</h3>
+tripartiteOS is built using NASM and DJGPP which are industry-leading tools!
+
+<h3>Private!</h3>
+tripartiteOS lacks any telemetry, ensuring maximal privacy!
+
+<h3>Secure!</h3>
+tripartiteOS isn't vulnerable to any modern-day viruses, malware and threats meaning your data will be safe!
+
+<h2>Current progress</h2>
+tripartiteOS is a WIP system, meaning that it's not yet fully complete. Currently:
+<br>
+16-bit DOS-based initialization code is 99% complete
+32-bit kenrel code is 1% complete, out of which:
+- Context switching and multitasking are 0% complete
+- syscalls and system services are 0% complete
+</template>
+
+<script>
+  document.body.style.cursor = "wait";
+  const navHTML = document.getElementById('nav-template').innerHTML;
+  const contentHTML = document.getElementById('content-template').innerHTML;
+
+  const output = document.createElement('div');
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  cursor.textContent = '_';
+
+  document.body.innerHTML = '';
+  document.body.appendChild(output);
+  document.body.appendChild(cursor);
+
+  let i = 0;
+  let isTag = false;
+  let currentHTML = navHTML;
+
+  function typeNext() {
+    if (i <= currentHTML.length) {
+      const char = currentHTML[i];
+      if (char === '<') isTag = true;
+      if (char === '>') isTag = false;
+
+      const speedup = isTag ? 6 : 8;
+      output.innerHTML = currentHTML.slice(0, i += speedup);
+      setTimeout(typeNext, 0);
+    } else if (currentHTML === navHTML) {
+      // Done with nav, now type main content
+      currentHTML = navHTML + contentHTML;
+      i = navHTML.length;
+      setTimeout(typeNext, 0);
+    } else {
+      //cursor.remove();
+      document.body.style.cursor = 'auto';
+    }
+  }
+
+  typeNext();
+</script>
+
+</body>
+</html>
